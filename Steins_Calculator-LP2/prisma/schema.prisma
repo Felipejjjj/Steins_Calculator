@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  username String
+  email    String @unique
+  password String
+}
+
+model History {
+  id        Int      @id @default(autoincrement())
+  calc      String
+  resultado String
+  type      String
+  data      DateTime
+}
+
+model History_Pa {
+  id               Int      @id @default(autoincrement())
+  firstTerm        Int
+  commonDifference Int
+  lastTerm         Int
+  resultado        String
+  type             String
+  data             DateTime
+}
+
+model History_Pg {
+  id          Int      @id @default(autoincrement())
+  firstTerm   Int
+  commonRatio Int
+  lastTerm    Int
+  resultado   String
+  type        String
+  data        DateTime
+}
+
+model History_Mmc {
+  id        Int      @id @default(autoincrement())
+  num1      Int
+  num2      Int
+  resultado String
+  type      String
+  data      DateTime
+}
+
+model History_Mdc {
+  id        Int      @id @default(autoincrement())
+  num1      Int
+  num2      Int
+  resultado String
+  type      String
+  data      DateTime
+}
